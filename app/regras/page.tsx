@@ -45,8 +45,13 @@ export default function Regras() {
       items: [
         {
           rule: 'Animais de estimação',
-          allowed: false,
-          description: 'Infelizmente não aceitamos animais de estimação'
+          allowed: true,
+          description: 'Cachorros e outros animais de estimação são bem-vindos! Pedimos apenas que mantenham os animais supervisionados e que recolham suas necessidades.'
+        },
+        {
+          rule: 'Responsabilidade pelos animais',
+          allowed: true,
+          description: 'O hóspede é responsável por qualquer dano causado pelo animal. Mantenha seu pet seguro e respeite os outros hóspedes.'
         }
       ]
     },
@@ -97,7 +102,7 @@ export default function Regras() {
   const politicas = [
     {
       title: 'Cancelamento',
-      content: 'Pode cancelar gratuitamente até 48h antes do check-in.'
+      content: 'Não há política de cancelamento. A reserva não pode ser cancelada. Por favor, confirme sua disponibilidade antes de fazer a reserva.'
     },
     {
       title: 'Segurança',
@@ -114,44 +119,44 @@ export default function Regras() {
   ];
 
   return (
-    <div className="min-h-screen py-16">
-      <div className="container mx-auto px-4 sm:px-6 lg:px-8">
+    <div className="min-h-screen py-12 sm:py-16 w-full overflow-x-hidden">
+      <div className="container mx-auto px-4 sm:px-6 lg:px-8 w-full">
         {/* Header */}
-        <div className="max-w-3xl mx-auto text-center mb-16">
-          <h1 className="text-4xl sm:text-5xl md:text-6xl font-bold mb-6 bg-gradient-to-r from-[#0077BE] to-[#2C5282] bg-clip-text text-transparent">
+        <div className="max-w-3xl mx-auto text-center mb-10 sm:mb-16">
+          <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold mb-4 sm:mb-6 bg-gradient-to-r from-[#0077BE] to-[#2C5282] bg-clip-text text-transparent px-4">
             Regras da Casa
           </h1>
-          <p className="text-lg text-gray-600 leading-relaxed max-w-2xl mx-auto">
+          <p className="text-base sm:text-lg text-gray-600 leading-relaxed max-w-2xl mx-auto px-4">
             Para garantir uma experiência agradável para todos, pedimos que você siga estas regras simples. 
             Elas estão aqui para criar um ambiente respeitoso e acolhedor para todos os nossos hóspedes.
           </p>
         </div>
 
         {/* Rules Grid */}
-        <div className="max-w-5xl mx-auto space-y-8 mb-16">
+        <div className="max-w-5xl mx-auto space-y-6 sm:space-y-8 mb-12 sm:mb-16">
           {regras.map((category, categoryIndex) => {
             const Icon = category.icon;
             return (
               <div 
                 key={categoryIndex}
-                className="bg-white rounded-2xl shadow-lg p-6 sm:p-8 border border-[#0077BE]/10 hover:shadow-xl transition-shadow duration-300"
+                className="bg-white rounded-2xl shadow-lg p-5 sm:p-6 lg:p-8 border border-[#0077BE]/10 hover:shadow-xl transition-shadow duration-300"
               >
-                <div className="flex items-center space-x-3 mb-6">
-                  <div className="p-2 bg-gradient-to-br from-[#0077BE] to-[#4ECDC4] rounded-lg">
-                    <Icon className="text-white" size={24} />
+                <div className="flex items-center space-x-3 mb-4 sm:mb-6">
+                  <div className="p-2 bg-gradient-to-br from-[#0077BE] to-[#4ECDC4] rounded-lg flex-shrink-0">
+                    <Icon className="text-white" size={20} />
                   </div>
-                  <h2 className="text-2xl font-bold text-gray-800">
+                  <h2 className="text-xl sm:text-2xl font-bold text-gray-800">
                     {category.category}
                   </h2>
                 </div>
 
-                <div className="space-y-4">
+                <div className="space-y-3 sm:space-y-4">
                   {category.items.map((item, itemIndex) => {
                     const StatusIcon = item.allowed ? CheckCircle : XCircle;
                     return (
                       <div 
                         key={itemIndex}
-                        className={`p-4 rounded-xl border-2 ${
+                        className={`p-3 sm:p-4 rounded-xl border-2 ${
                           item.allowed 
                             ? 'bg-green-50 border-green-200' 
                             : 'bg-red-50 border-red-200'
@@ -160,15 +165,15 @@ export default function Regras() {
                         <div className="flex items-start space-x-3">
                           <StatusIcon 
                             className={`${item.allowed ? 'text-green-600' : 'text-red-600'} flex-shrink-0 mt-0.5`} 
-                            size={22} 
+                            size={20} 
                           />
                           <div className="flex-1">
-                            <h3 className={`font-semibold mb-1 ${
+                            <h3 className={`font-semibold mb-1 text-sm sm:text-base ${
                               item.allowed ? 'text-green-800' : 'text-red-800'
                             }`}>
                               {item.rule}
                             </h3>
-                            <p className={`text-sm ${
+                            <p className={`text-xs sm:text-sm ${
                               item.allowed ? 'text-green-700' : 'text-red-700'
                             }`}>
                               {item.description}
@@ -186,20 +191,20 @@ export default function Regras() {
 
         {/* Policies Section */}
         <div className="max-w-4xl mx-auto">
-          <h2 className="text-3xl font-bold text-center mb-12 bg-gradient-to-r from-[#0077BE] to-[#4ECDC4] bg-clip-text text-transparent">
+          <h2 className="text-2xl sm:text-3xl font-bold text-center mb-8 sm:mb-12 bg-gradient-to-r from-[#0077BE] to-[#4ECDC4] bg-clip-text text-transparent px-4">
             Políticas e Informações
           </h2>
           
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-4 sm:gap-6">
             {politicas.map((policy, index) => (
               <div 
                 key={index}
-                className="bg-gradient-to-br from-white to-[#F4EBD9]/30 p-6 rounded-xl shadow-md border border-[#0077BE]/10 hover:shadow-lg transition-all duration-300"
+                className="bg-gradient-to-br from-white to-[#F4EBD9]/30 p-5 sm:p-6 rounded-xl shadow-md border border-[#0077BE]/10 hover:shadow-lg transition-all duration-300"
               >
-                <h3 className="text-xl font-semibold text-gray-800 mb-3">
+                <h3 className="text-lg sm:text-xl font-semibold text-gray-800 mb-2 sm:mb-3">
                   {policy.title}
                 </h3>
-                <p className="text-gray-600 leading-relaxed">
+                <p className="text-sm sm:text-base text-gray-600 leading-relaxed">
                   {policy.content}
                 </p>
               </div>
@@ -208,19 +213,21 @@ export default function Regras() {
         </div>
 
         {/* Call to Action */}
-        <div className="max-w-3xl mx-auto mt-16 text-center">
-          <div className="bg-gradient-to-br from-[#0077BE] to-[#4ECDC4] rounded-2xl p-8 sm:p-10 shadow-xl">
-            <Heart className="inline-block mb-4 text-white" size={40} />
-            <h3 className="text-2xl sm:text-3xl font-bold text-white mb-4">
+        <div className="max-w-3xl mx-auto mt-12 sm:mt-16 text-center px-4">
+          <div className="bg-gradient-to-br from-[#0077BE] to-[#4ECDC4] rounded-2xl p-6 sm:p-8 lg:p-10 shadow-xl">
+            <Heart className="inline-block mb-3 sm:mb-4 text-white" size={32} />
+            <h3 className="text-xl sm:text-2xl lg:text-3xl font-bold text-white mb-3 sm:mb-4">
               Dúvidas?
             </h3>
-            <p className="text-white/90 mb-6 text-lg">
+            <p className="text-white/90 mb-5 sm:mb-6 text-base sm:text-lg">
               Se tiver qualquer dúvida sobre as regras ou precisar de mais informações, 
               não hesite em nos contatar.
             </p>
             <a 
-              href="mailto:contato@bomlar.com.br"
-              className="inline-block px-6 py-3 bg-white text-[#0077BE] rounded-full font-semibold hover:bg-gray-100 transition-all duration-300 transform hover:scale-105 shadow-lg"
+              href="https://wa.me/5548991126107"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="inline-block px-5 sm:px-6 py-2.5 sm:py-3 bg-white text-[#0077BE] rounded-full font-semibold hover:bg-gray-100 transition-all duration-300 transform hover:scale-105 shadow-lg text-sm sm:text-base"
             >
               Entrar em Contato
             </a>
